@@ -25,10 +25,10 @@
 >> socket.io-client is used to establish socket connection with the server for watch command. 
 # Screenshots
 - obtaining docker ip address using "ip addr show"
-![alt text](./screenshots/s4.png)
+- ![alt text](./screenshots/s4.png)
 - watch command
-![alt text](./screenshots/s1.png)
+- ![alt text](./screenshots/s1.png)
 - put command
-![alt text](./screenshots/s2.png)
-get command
+- ![alt text](./screenshots/s2.png)
+- get command
 - ![alt text](./screenshots/s3.png)
