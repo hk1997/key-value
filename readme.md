@@ -11,7 +11,11 @@
 
 > Client
 - obtain docker ip using "ip addr show"
+- npm install
 - change url variable in index.js file in client folder.
+## List of contents
+> Server
+- api: Contains logic for put,get and watch
 # Screenshots
 - obtaining docker ip address using "ip addr show"
 ![alt text](./screenshots/s4.png)
