@@ -6,6 +6,9 @@ const app = express();
 const config=require('./config')
 const routes=require('./api/routes')
 const cors=require('cors')
+const http = require('http').Server(app);
+
+
 
 mongoose
   .connect(
@@ -22,6 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 //redirecting all request calls to routes.js
 app.use('/',routes)
+
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

@@ -1,8 +1,13 @@
+// #!/usr/bin/env node
 const program = require('commander');
-const axios=require('axios')
+//const axios=require('axios')
 
-const put_url='192.168.122.1:3000/put'
-const get_url='192.168.122.1:3000/get'
+const put_url='http://172.17.0.1:3000/put'
+const get_url='http://172.17.0.1:3000/get'
+const watch='http://172.17.0.1'
+const watch_url=watch+':8000'
+var request = require('request');
+
 program
   .version('0.0.1')
   .description('key value system');
@@ -12,7 +17,20 @@ program
   .alias('p')
   .description('Put key value')
   .action((key,value) => {
-    return put(key,value);
+
+    body={'body':{
+      'key':key,'value':value
+    }}
+
+    request.post(
+    put_url,
+    { json: { key: key,value:value } },
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+        }
+    }
+    );
   });
 
 program
@@ -20,16 +38,46 @@ program
   .alias('g')
   .description('Get key')
   .action((key) => {
-    console.log(key);
+    request.post(
+    get_url,
+    { json: { key: key} },
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+        }
+    }
+    );
   });
 
-var put=(key,val)=>{
-  axios.post(put_url,{'key':key,'value':val}).then(function (response) {
-    console.log(response['message']);
-  })
-  .catch(function (error) {
-    console.log(error);
+program
+  .command('watch')
+  .alias('g')
+  .description('watch for changes')
+  .action((key) => {
+
+    const io = require('socket.io-client')(watch_url)
+
+    socket = io.connect(watch, {port: 8000, transports: ["websocket"]});
+
+    io.on('connect',()=>{
+      console.log('Connected to server to watch for changes')
+
+      io.on('change',(msg)=>{
+        //console.log(msg)
+        console.log(msg)
+//        console.log(,msg['fullDocument']['key'],'->',msg['fullDocument']['key'])
+      })
+
+      // io.emit('testerEvent', { description: 'A custom event named testerEvent!'});
+      //
+      // io.on('testerEvent',(msg)=>{
+      //   console.log('tester even ka ',msg)
+      // })
+    })
+
+
   });
-}
+
+
 
 program.parse(process.argv);
