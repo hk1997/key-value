@@ -12,3 +12,12 @@
 > Client
 - obtain docker ip using "ip addr show"
 - change url variable in index.js file in client folder.
+# Screenshots
+- obtaining docker ip address using "ip addr show"
+![alt text](./screenshots/s4.png)
+- push command
+![alt text](./screenshots/s1.png)
+- get command
+![alt text](./screenshots/s2.png)
+- watch command
+![alt text](./screenshots/s3.png)
