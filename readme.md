@@ -16,15 +16,19 @@
 ## List of contents
 > Server
 - api/api.js: Contains logic for put,get and watch
->> - We are using MongoDb as databasse service
+>> - We are using MongoDb as database service
 >> - Put and get are simple mongoDb insert, update and read operations
 >> - Watch is implemented using mongoDb streams and socket.io
+> Client
+- index.js: Client side code
+>> We are using commander for command line interface and request to send http requests.
+>> socket.io-client is used to establish socket connection with the server for watch command. 
 # Screenshots
 - obtaining docker ip address using "ip addr show"
 ![alt text](./screenshots/s4.png)
 - watch command
-- ![alt text](./screenshots/s1.png)
+![alt text](./screenshots/s1.png)
 - put command
-- ![alt text](./screenshots/s2.png)
-- get command
+![alt text](./screenshots/s2.png)
+get command
 - ![alt text](./screenshots/s3.png)
