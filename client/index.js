@@ -1,11 +1,9 @@
-// #!/usr/bin/env node
 const program = require('commander');
-//const axios=require('axios')
 
-const put_url='http://172.17.0.1:3000/put'
-const get_url='http://172.17.0.1:3000/get'
-const watch='http://172.17.0.1'
-const watch_url=watch+':8000'
+const url='http://172.17.0.1' //change this with your docker ip-address
+const put_url=url+':3000/put'
+const get_url=url+':3000/get'
+const watch_url=url+':8000'
 var request = require('request');
 
 program
@@ -57,22 +55,15 @@ program
 
     const io = require('socket.io-client')(watch_url)
 
-    socket = io.connect(watch, {port: 8000, transports: ["websocket"]});
+    socket = io.connect(url, {port: 8000, transports: ["websocket"]});
 
     io.on('connect',()=>{
       console.log('Connected to server to watch for changes')
 
       io.on('change',(msg)=>{
-        //console.log(msg)
         console.log(msg)
-//        console.log(,msg['fullDocument']['key'],'->',msg['fullDocument']['key'])
-      })
 
-      // io.emit('testerEvent', { description: 'A custom event named testerEvent!'});
-      //
-      // io.on('testerEvent',(msg)=>{
-      //   console.log('tester even ka ',msg)
-      // })
+      })
     })
 
 
