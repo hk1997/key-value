@@ -15,9 +15,9 @@
 # Screenshots
 - obtaining docker ip address using "ip addr show"
 ![alt text](./screenshots/s4.png)
-- push command
-![alt text](./screenshots/s1.png)
-- get command
-![alt text](./screenshots/s2.png)
 - watch command
-![alt text](./screenshots/s3.png)
+- ![alt text](./screenshots/s1.png)
+- put command
+- ![alt text](./screenshots/s2.png)
+- get command
+- ![alt text](./screenshots/s3.png)
