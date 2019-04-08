@@ -15,7 +15,10 @@
 - change url variable in index.js file in client folder.
 ## List of contents
 > Server
-- api: Contains logic for put,get and watch
+- api/api.js: Contains logic for put,get and watch
+>> - We are using MongoDb as databasse service
+>> - Put and get are simple mongoDb insert, update and read operations
+>> - Watch is implemented using mongoDb streams and socket.io
 # Screenshots
 - obtaining docker ip address using "ip addr show"
 ![alt text](./screenshots/s4.png)
